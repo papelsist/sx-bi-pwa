@@ -1,0 +1,13 @@
+.resumen-row {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.cliente {
+  font-size: 1.2rem;
+}
+
+.part {
+  font-size: 1.1rem;
+}

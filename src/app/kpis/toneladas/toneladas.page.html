@@ -1,0 +1,149 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <papsx-kpi-header title="Toneladas"></papsx-kpi-header>
+  <ion-content class="ion-padding" *ngIf="vm.toneladas as kp">
+    <div class="header">
+      <div class="kpi">
+        <span>KPI:</span>
+        <ion-text [color]="getColorKpi(vm)"> {{kp.kpi}} </ion-text>
+      </div>
+    </div>
+
+    <ion-grid class="table">
+      <ion-row class="row-header">
+        <ion-col
+          *ngFor="let c of ['Tipo', 'Venta', 'Meta', 'Dif', 'Meta%']"
+          class="ion-text-center"
+        >
+          {{c}}
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let seg of ['semanal', 'mensual', 'anual']">
+        <ion-col>{{ getTipo(seg)}}</ion-col>
+        <ion-col class="ion-text-end">{{kp[seg + '_importe']}}</ion-col>
+        <ion-col class="ion-text-end">{{kp[seg+'_meta']}}</ion-col>
+        <ion-col class="ion-text-end">{{kp[seg+'_diferencia']}}</ion-col>
+        <ion-col class="ion-text-center">{{kp[seg+'_desviacion']}}</ion-col>
+      </ion-row>
+
+      <ion-row> </ion-row>
+    </ion-grid>
+
+    <ion-grid class="segments">
+      <ion-row>
+        <ion-col>
+          <ion-segment
+            (ionChange)="segmentChanged($event)"
+            scrollable
+            [value]="segment"
+            mode="ios"
+          >
+            <ion-segment-button value="toneladas">
+              <ion-label>Toneladas</ion-label>
+            </ion-segment-button>
+            <!-- <ion-segment-button value="importe">
+              <ion-label>Importe</ion-label>
+            </ion-segment-button> -->
+            <!-- <ion-segment-button value="ventas">
+              <ion-label>Ventas</ion-label>
+            </ion-segment-button> -->
+
+            <ion-segment-button value="vales">
+              <ion-label>Vales</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="ventas-section" *ngIf="ventas$ | async as ventas">
+      <ion-slides
+        [options]="slideOptions"
+        #slides
+        (ionSlideNextEnd)="onSlideChanged($event)"
+      >
+        <ion-slide class="ion-no-padding" id="toneladas">
+          <div class="analisis">
+            <papx-kpi-ventas-por-tonelada
+              [ventas]="ventas"
+              [semana]="vm.semana"
+              tipo="SEM"
+            ></papx-kpi-ventas-por-tonelada>
+            <papx-kpi-ventas-por-tonelada
+              [ventas]="ventas"
+              [semana]="vm.semana"
+              tipo="MES"
+            ></papx-kpi-ventas-por-tonelada>
+            <papx-kpi-ventas-por-tonelada
+              [ventas]="ventas"
+              [semana]="vm.semana"
+              tipo="ANIO"
+            ></papx-kpi-ventas-por-tonelada>
+          </div>
+        </ion-slide>
+        <!-- <ion-slide>
+          <div class="analisis">
+            <papx-kpi-ventas-importe
+              tipo="SEM"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-ventas-importe>
+            <papx-kpi-ventas-importe
+              tipo="MES"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-ventas-importe>
+            <papx-kpi-ventas-importe
+              tipo="ANIO"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-ventas-importe>
+          </div>
+        </ion-slide> -->
+        <!-- <ion-slide class="ion-no-padding" id="ventas">
+          <div class="analisis">
+            <papx-kpi-ventas-ticket
+              tipo="SEM"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-ventas-ticket>
+            <papx-kpi-ventas-ticket
+              tipo="MES"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-ventas-ticket>
+            <papx-kpi-ventas-ticket
+              tipo="ANIO"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-ventas-ticket>
+          </div>
+        </ion-slide> -->
+        <ion-slide class="ion-no-padding" id="vales">
+          <div class="analisis">
+            <papx-kpi-vales-descuento
+              tipo="SEM"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-vales-descuento>
+            <papx-kpi-vales-descuento
+              tipo="MES"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-vales-descuento>
+            <papx-kpi-vales-descuento
+              tipo="ANIO"
+              [ventas]="ventas"
+              [semana]="vm.semana"
+            ></papx-kpi-vales-descuento>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title size="small"> KPIs Papel S.A.</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ng-container>

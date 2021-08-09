@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="analytics/cxc"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Antigüedad de saldos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showOptions($event)">
+        <ion-icon
+          slot="icon-only"
+          ios="ellipsis-horizontal"
+          md="ellipsis-vertical"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <papx-as-resumen
+    [summary]="summary"
+    *ngIf="summary$ | async as summary"
+  ></papx-as-resumen>
+
+  <papx-as-toolbar
+    (searchChange)="onSearch($event)"
+    (sortChange)="changeSort($event)"
+    (orderChange)="changeOrder($event)"
+  ></papx-as-toolbar>
+
+  <papx-as-list [rows]="antiguedad$ | async"></papx-as-list>
+</ion-content>

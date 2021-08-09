@@ -1,0 +1,58 @@
+<ion-card>
+  <ion-card-header color="light">
+    <ion-card-title>
+      {{ getTitle() }}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row class="row-header">
+        <ion-col>Suc</ion-col>
+        <ion-col size="3">Venta (Ton)</ion-col>
+        <ion-col size="3">Importe</ion-col>
+        <ion-col class="ion-hide-sm-down">%</ion-col>
+        <ion-col class="ion-hide-sm-down">P x Kg</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let x of ventas">
+        <ion-col sucursal>{{ getSucursalLabel(x.sucursal) }}</ion-col>
+        <ion-col size="3" class="ion-text-end">
+          {{ x.toneladas | number: "1.0-0" }}</ion-col
+        >
+        <ion-col size="3" class="ion-text-end">
+          {{ x.venta | number: "1.0-0" }}</ion-col
+        >
+        <ion-col class="ion-hide-sm-down">
+          {{ x.toneladas / totalPorSegmento | percent }}
+        </ion-col>
+        <ion-col class="ion-hide-sm-down"> {{ x.precioPorKilo }} </ion-col>
+      </ion-row>
+      <!-- Por tipo de venta -->
+      <ion-item-divider>Por tipo de venta</ion-item-divider>
+      <ion-row *ngFor="let x of porTipo" por-tipo>
+        <ion-col sucursal>{{ getSucursalLabel(x.sucursal) }}</ion-col>
+        <ion-col size="3"> {{ x.toneladas | number: "1.0-0" }}</ion-col>
+        <ion-col size="3"> {{ x.venta | number: "1.0-0" }}</ion-col>
+        <ion-col class="ion-hide-sm-down">
+          {{ x.toneladas / totalPorSegmento | percent }}
+        </ion-col>
+        <ion-col class="ion-hide-sm-down"> {{ x.precioPorKilo }} </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-hide-sm-up">
+      <ion-row class="row-header">
+        <ion-col>Suc</ion-col>
+        <ion-col>Participación</ion-col>
+        <ion-col>Precio / Kg</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let x of ventas">
+        <ion-col sucursal>{{ getSucursalLabel(x.sucursal) }}</ion-col>
+        <ion-col>
+          {{ x.toneladas / totalPorSegmento | percent }}
+        </ion-col>
+        <ion-col> {{ x.precioPorKilo }} </ion-col>
+      </ion-row>
+    </ion-grid>
+    <canvas #doughnutCanvas></canvas>
+  </ion-card-content>
+</ion-card>

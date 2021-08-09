@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> {{title}} </ion-title>
+    <ion-buttons slot="end"> </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="user$ | async as user">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <img class="logo" src="/assets/icon/logo.svg" alt="Papel Logo svg" />
+      <ion-title size="large">{{title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <div class="crop">
+      <img class="logo" src="/assets/icon/logo2.svg" alt="Papel Logo svg" />
+    </div>
+    <br />
+    <strong>Bienvenido</strong>
+    <p>
+      <ion-text color="warning">
+        <strong> {{user.displayName}} </strong>
+      </ion-text>
+    </p>
+    <p>Inteligencia de negocios PaperAnalytics <sub>Ver: 1.0.2</sub></p>
+
+    <!-- <ion-button
+      routerLink="/intro"
+      [queryParams]="{force: true}"
+      fill="outline"
+      shape="round"
+    >
+      Intro
+    </ion-button> -->
+  </div>
+</ion-content>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "papx-ws-dev": {
+      "hosting": {
+        "app": [
+          "papelbi"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "development": "papx-ws-dev"
+  }
+}

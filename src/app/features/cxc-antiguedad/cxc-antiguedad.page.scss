@@ -1,0 +1,22 @@
+.as-toolbar {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 5px;
+  padding: 0 10px 5px;
+  ion-searchbar {
+    padding: 0;
+    height: 45px;
+    padding: 0;
+  }
+}
+.options {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 5px;
+  ion-item {
+    flex: 1 0 auto;
+  }
+}

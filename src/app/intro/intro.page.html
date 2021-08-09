@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true">
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img
+        src="https://via.placeholder.com/650?text=Visit+Blogging.com+NowC/O https://placeholder.com/"
+      />
+      <h2>Bienvenido!</h2>
+      <p>Business Intelligence de los sistemas de Papel S.A.</p>
+      <div class="tablero">
+        <ion-button
+          color="teritiary"
+          fill="clear"
+          expand="block"
+          routerLink="/home"
+        >
+          <ion-label>Accesar</ion-label>
+          <ion-icon name="log-in-outline" slot="start"></ion-icon>
+        </ion-button>
+        <div class="mostrar-intro">
+          <span class="ion-padding-end">Mostrar al iniciar la aplicación </span>
+          <ion-checkbox [(ngModel)]="showIntro"></ion-checkbox>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img
+        src="https://via.placeholder.com/650?text=Visit+Blogging.com+NowC/O https://placeholder.com/"
+      />
+      <h2>Tableros</h2>
+      <p>Tableros de control</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img
+        src="https://via.placeholder.com/650?text=Visit+Blogging.com+NowC/O https://placeholder.com/"
+      />
+      <h2>Indicadores</h2>
+      <p>
+        KPI (Key performance indicators) adaptados al negocio en sus diversos
+        sectores y etapas de procesos
+      </p>
+    </ion-slide>
+    <ion-slide>
+      <img
+        src="https://via.placeholder.com/650?text=Visit+Blogging.com+NowC/O https://placeholder.com/"
+      />
+      <h2>Reportes</h2>
+      <p>Todo tipo de reporte y gráfico</p>
+    </ion-slide>
+    <ion-slide>
+      <img
+        src="https://via.placeholder.com/650?text=Visit+Blogging.com+NowC/O https://placeholder.com/"
+      />
+      <h2>Alarmas</h2>
+      <p>Diversas alarmas configurables para la detección de operaciones</p>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

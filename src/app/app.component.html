@@ -1,0 +1,72 @@
+<ion-app>
+  <ion-menu
+    side="start"
+    menuId="first"
+    contentId="main"
+    #mnu
+    *ngIf="user$ | async as user"
+  >
+    <ion-header>
+      <ion-toolbar color="accent">
+        <ion-buttons slot="start">
+          <ion-avatar>
+            <img src="assets/images/menu-logo.svg" class="logo-image" />
+          </ion-avatar>
+        </ion-buttons>
+        <ion-title>{{ user.displayName }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item detail routerLink="/home" (click)="mnu.close()">
+          <ion-label>Inicio</ion-label>
+          <ion-icon name="home" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-item detail routerLink="/analytics" (click)="mnu.close()">
+          <ion-label>Analytics</ion-label>
+          <ion-icon name="analytics" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-item detail routerLink="/kpis" (click)="mnu.close()">
+          <ion-label>Indicadores (KPIs)</ion-label>
+          <ion-icon name="trail-sign" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-item detail routerLink="/tableros" (click)="mnu.close()">
+          <ion-label>Tableros</ion-label>
+          <ion-icon name="speedometer" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-item detail routerLink="/reportes" (click)="mnu.close()">
+          <ion-label>Reportes</ion-label>
+          <ion-icon name="pie-chart" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-item detail routerLink="/clientes" (click)="mnu.close()">
+          <ion-label>Clientes</ion-label>
+          <ion-icon name="people" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-item detail routerLink="/productos" (click)="mnu.close()">
+          <ion-label>Productos</ion-label>
+          <ion-icon name="layers" slot="start"></ion-icon>
+        </ion-item>
+
+        <ion-item detail routerLink="/promociones" (click)="mnu.close()">
+          <ion-label>Promociones</ion-label>
+          <ion-icon name="color-wand" slot="start"></ion-icon>
+        </ion-item>
+        <ion-item detail routerLink="/settings" (click)="mnu.toggle()">
+          <ion-label>Mi cuenta</ion-label>
+          <ion-icon slot="start" name="settings"></ion-icon>
+        </ion-item>
+        <ion-item button (click)="signOut(); mnu.close()">
+          <ion-label> Salir </ion-label>
+          <ion-icon slot="end" name="log-out"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>
